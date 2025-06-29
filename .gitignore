@@ -1,0 +1,41 @@
+# Build results
+bin/
+obj/
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Visual Studio files
+.vs/
+
+# Rider files
+.idea/
+
+# VS Code files
+.vscode/
+
+# Dotnet CLI packages
+*.nupkg
+*.snupkg
+
+# NuGet package folders
+**/packages/*
+!**/packages/build/
+!**/packages/repositories.config
+
+# Others
+*.log
+*.tmp
+*.bak
+*.dbmdl
+*.pdb
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Auto-generated files
+Generated_Code/
