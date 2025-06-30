@@ -31,7 +31,7 @@
             LabelMinValue = new Label();
             LabelMaxValue = new Label();
             TextBoxMinValue = new TextBox();
-            textBox1 = new TextBox();
+            TextBoxMaxValue = new TextBox();
             CheckBoxIsIntegralOnly = new CheckBox();
             CheckBoxMustBePrecise = new CheckBox();
             LabelSuggestedType = new Label();
@@ -61,20 +61,22 @@
             // TextBoxMinValue
             // 
             TextBoxMinValue.Font = new Font("Segoe UI", 16F);
-            TextBoxMinValue.Location = new Point(407, 84);
+            TextBoxMinValue.Location = new Point(407, 86);
             TextBoxMinValue.Name = "TextBoxMinValue";
             TextBoxMinValue.ScrollBars = ScrollBars.Vertical;
             TextBoxMinValue.Size = new Size(1024, 64);
             TextBoxMinValue.TabIndex = 2;
+            TextBoxMinValue.KeyPress += TextBoxMinValue_KeyPress;
             // 
-            // textBox1
+            // TextBoxMaxValue
             // 
-            textBox1.Font = new Font("Segoe UI", 16F);
-            textBox1.Location = new Point(407, 172);
-            textBox1.Name = "textBox1";
-            textBox1.ScrollBars = ScrollBars.Vertical;
-            textBox1.Size = new Size(1024, 64);
-            textBox1.TabIndex = 3;
+            TextBoxMaxValue.Font = new Font("Segoe UI", 16F);
+            TextBoxMaxValue.Location = new Point(407, 174);
+            TextBoxMaxValue.Name = "TextBoxMaxValue";
+            TextBoxMaxValue.ScrollBars = ScrollBars.Vertical;
+            TextBoxMaxValue.Size = new Size(1024, 64);
+            TextBoxMaxValue.TabIndex = 3;
+            TextBoxMaxValue.KeyPress += TextBoxMaxValue_KeyPress;
             // 
             // CheckBoxIsIntegralOnly
             // 
@@ -87,6 +89,7 @@
             CheckBoxIsIntegralOnly.TabIndex = 4;
             CheckBoxIsIntegralOnly.Text = "Integral only?";
             CheckBoxIsIntegralOnly.UseVisualStyleBackColor = true;
+            CheckBoxIsIntegralOnly.CheckedChanged += CheckBoxIsIntegralOnly_CheckedChanged;
             // 
             // CheckBoxMustBePrecise
             // 
@@ -99,6 +102,7 @@
             CheckBoxMustBePrecise.TabIndex = 5;
             CheckBoxMustBePrecise.Text = "Must be precise?";
             CheckBoxMustBePrecise.UseVisualStyleBackColor = true;
+            CheckBoxMustBePrecise.CheckedChanged += CheckBoxMustBePrecise_CheckedChanged;
             // 
             // LabelSuggestedType
             // 
@@ -116,20 +120,20 @@
             LabelSuggestedTypeValue.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
             LabelSuggestedTypeValue.Location = new Point(407, 461);
             LabelSuggestedTypeValue.Name = "LabelSuggestedTypeValue";
-            LabelSuggestedTypeValue.Size = new Size(362, 59);
+            LabelSuggestedTypeValue.Size = new Size(0, 59);
             LabelSuggestedTypeValue.TabIndex = 7;
-            LabelSuggestedTypeValue.Text = "not enough data";
             // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = SystemColors.ActiveCaption;
             ClientSize = new Size(1508, 680);
             Controls.Add(LabelSuggestedTypeValue);
             Controls.Add(LabelSuggestedType);
             Controls.Add(CheckBoxMustBePrecise);
             Controls.Add(CheckBoxIsIntegralOnly);
-            Controls.Add(textBox1);
+            Controls.Add(TextBoxMaxValue);
             Controls.Add(TextBoxMinValue);
             Controls.Add(LabelMaxValue);
             Controls.Add(LabelMinValue);
@@ -144,7 +148,7 @@
         private Label LabelMinValue;
         private Label LabelMaxValue;
         private TextBox TextBoxMinValue;
-        private TextBox textBox1;
+        private TextBox TextBoxMaxValue;
         private CheckBox CheckBoxIsIntegralOnly;
         private CheckBox CheckBoxMustBePrecise;
         private Label LabelSuggestedType;
