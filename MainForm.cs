@@ -20,6 +20,27 @@ namespace NumericTypesSuggester
         private void TextBoxValue_TextChanged(object sender, EventArgs e)
         {
             RecalculateSuggestedType();
+            SetColorOfMaxValueTextField();
+        }
+        private void SetColorOfMaxValueTextField()
+        {
+            bool isValid = true;
+            if (IsInputComplete())
+            {
+                var minValue = BigInteger.Parse(TextBoxMinValue.Text);
+                var maxValue = BigInteger.Parse(TextBoxMaxValue.Text);
+                if (maxValue < minValue) isValid = false;
+                TextBoxMaxValue.BackColor = isValid ? Color.White : Color.IndianRed;
+            }
+        }
+
+        private bool IsInputComplete()
+        {
+            return
+                TextBoxMinValue.Text.Length > 0 &&
+                TextBoxMaxValue.Text.Length > 0 &&
+                TextBoxMinValue.Text != "-" &&
+                TextBoxMaxValue.Text != "-";
         }
 
         private static bool IsTextBoxValueValid(char keyChar, TextBox textBox)
@@ -72,14 +93,9 @@ namespace NumericTypesSuggester
                     textBoxMaxValue < textBoxMinValue)
                 {
                     LabelSuggestedTypeValue.Text = "not enough data";
-                    if (textBoxMaxValue < textBoxMinValue)
-                    {
-                        TextBoxMaxValue.BackColor = Color.Red;
-                    }
                 }
                 else
                 {
-                    TextBoxMaxValue.BackColor = Color.White;
                     if (textBoxMinValue >= 0 && textBoxMaxValue <= byte.MaxValue)
                     {
                         LabelSuggestedTypeValue.Text = "byte";
