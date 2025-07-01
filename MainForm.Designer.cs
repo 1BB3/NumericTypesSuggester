@@ -66,6 +66,7 @@
             TextBoxMinValue.ScrollBars = ScrollBars.Vertical;
             TextBoxMinValue.Size = new Size(1024, 64);
             TextBoxMinValue.TabIndex = 2;
+            TextBoxMinValue.TextChanged += TextBoxValue_TextChanged;
             TextBoxMinValue.KeyPress += TextBoxValue_KeyPress;
             // 
             // TextBoxMaxValue
@@ -76,6 +77,7 @@
             TextBoxMaxValue.ScrollBars = ScrollBars.Vertical;
             TextBoxMaxValue.Size = new Size(1024, 64);
             TextBoxMaxValue.TabIndex = 3;
+            TextBoxMaxValue.TextChanged += TextBoxValue_TextChanged;
             TextBoxMaxValue.KeyPress += TextBoxValue_KeyPress;
             // 
             // CheckBoxIsIntegralOnly

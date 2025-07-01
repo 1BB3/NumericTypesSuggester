@@ -12,20 +12,15 @@ namespace NumericTypesSuggester
 
         private void TextBoxValue_KeyPress(object sender, KeyPressEventArgs e)
         {
-            RecalculateSuggestedType();
             if (!IsTextBoxValueValid(e.KeyChar, (TextBox)sender))
             {
                 e.Handled = true;
             }
         }
-        //private void TextBoxMaxValue_KeyPress(object sender, KeyPressEventArgs e)
-        //{
-        //    RecalculateSuggestedType();
-        //    if (!IsTextBoxValueValid(e.KeyChar, TextBoxMaxValue))
-        //    {
-        //        e.Handled = true;
-        //    }
-        //}
+        private void TextBoxValue_TextChanged(object sender, EventArgs e)
+        {
+            RecalculateSuggestedType();
+        }
 
         private static bool IsTextBoxValueValid(char keyChar, TextBox textBox)
         {
