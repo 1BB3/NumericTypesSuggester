@@ -66,7 +66,7 @@
             TextBoxMinValue.ScrollBars = ScrollBars.Vertical;
             TextBoxMinValue.Size = new Size(1024, 64);
             TextBoxMinValue.TabIndex = 2;
-            TextBoxMinValue.KeyPress += TextBoxMinValue_KeyPress;
+            TextBoxMinValue.KeyPress += TextBoxValue_KeyPress;
             // 
             // TextBoxMaxValue
             // 
@@ -76,12 +76,14 @@
             TextBoxMaxValue.ScrollBars = ScrollBars.Vertical;
             TextBoxMaxValue.Size = new Size(1024, 64);
             TextBoxMaxValue.TabIndex = 3;
-            TextBoxMaxValue.KeyPress += TextBoxMaxValue_KeyPress;
+            TextBoxMaxValue.KeyPress += TextBoxValue_KeyPress;
             // 
             // CheckBoxIsIntegralOnly
             // 
             CheckBoxIsIntegralOnly.AutoSize = true;
             CheckBoxIsIntegralOnly.CheckAlign = ContentAlignment.MiddleRight;
+            CheckBoxIsIntegralOnly.Checked = true;
+            CheckBoxIsIntegralOnly.CheckState = CheckState.Checked;
             CheckBoxIsIntegralOnly.Font = new Font("Segoe UI", 16F);
             CheckBoxIsIntegralOnly.Location = new Point(121, 263);
             CheckBoxIsIntegralOnly.Name = "CheckBoxIsIntegralOnly";
@@ -102,6 +104,7 @@
             CheckBoxMustBePrecise.TabIndex = 5;
             CheckBoxMustBePrecise.Text = "Must be precise?";
             CheckBoxMustBePrecise.UseVisualStyleBackColor = true;
+            CheckBoxMustBePrecise.Visible = false;
             CheckBoxMustBePrecise.CheckedChanged += CheckBoxMustBePrecise_CheckedChanged;
             // 
             // LabelSuggestedType

@@ -4,35 +4,30 @@ namespace NumericTypesSuggester
 {
     public partial class MainForm : Form
     {
-        private bool _isIntegralOnly = true;
-        private bool _mustBePrecise = false;
         public MainForm()
         {
             InitializeComponent();
-            CheckBoxIsIntegralOnly.Checked = true;
-            CheckBoxMustBePrecise.Checked = false;
-            CheckBoxMustBePrecise.Visible = false;
             LabelSuggestedTypeValue.Text = "not enough data";
         }
 
-        private void TextBoxMinValue_KeyPress(object sender, KeyPressEventArgs e)
+        private void TextBoxValue_KeyPress(object sender, KeyPressEventArgs e)
         {
-            ChangeFormState();
-            if (!IsTextBoxValueValid(e.KeyChar, TextBoxMinValue))
+            RecalculateSuggestedType();
+            if (!IsTextBoxValueValid(e.KeyChar, (TextBox)sender))
             {
                 e.Handled = true;
             }
         }
-        private void TextBoxMaxValue_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            ChangeFormState();
-            if (!IsTextBoxValueValid(e.KeyChar, TextBoxMaxValue))
-            {
-                e.Handled = true;
-            }
-        }
+        //private void TextBoxMaxValue_KeyPress(object sender, KeyPressEventArgs e)
+        //{
+        //    RecalculateSuggestedType();
+        //    if (!IsTextBoxValueValid(e.KeyChar, TextBoxMaxValue))
+        //    {
+        //        e.Handled = true;
+        //    }
+        //}
 
-        private bool IsTextBoxValueValid(char keyChar, TextBox textBox)
+        private static bool IsTextBoxValueValid(char keyChar, TextBox textBox)
         {
             return
                 char.IsDigit(keyChar) ||
@@ -44,18 +39,16 @@ namespace NumericTypesSuggester
 
         private void CheckBoxIsIntegralOnly_CheckedChanged(object sender, EventArgs e)
         {
-            _isIntegralOnly = !_isIntegralOnly;
-            CheckBoxMustBePrecise.Visible = !CheckBoxMustBePrecise.Visible;
-            ChangeFormState();
+            CheckBoxMustBePrecise.Visible = !CheckBoxIsIntegralOnly.Checked;
+            RecalculateSuggestedType();
         }
 
         private void CheckBoxMustBePrecise_CheckedChanged(object sender, EventArgs e)
         {
-            _mustBePrecise = !_mustBePrecise;
-            ChangeFormState();
+            RecalculateSuggestedType();
         }
 
-        private void ChangeFormState()
+        private void RecalculateSuggestedType()
         {
             if (CheckBoxIsIntegralOnly.Checked)
             {
